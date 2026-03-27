@@ -215,15 +215,15 @@ music.volume = 0;
 music.play();
 
 // fade in
-let v=0;
-const fade=setInterval(()=>{
-if(v<0.4){
-v+=0.02;
-music.volume=v;
-}else{
-clearInterval(fade);
-}
-},100);
+let v = 0;
+const fade = setInterval(() => {
+  if (v < 0.4) {
+    v += 0.02;
+    music.volume = v;
+  } else {
+    clearInterval(fade);
+  }
+}, 100);
 
 content.innerHTML=`
 <h2>Tentang Rasa yang Tak Pernah Sederhana</h2>
@@ -247,10 +247,15 @@ content.classList.add("show");
 },200);
 }
 
-  document.addEventListener("click", () => {
+  document.addEventListener("click", function unlockAudio() {
   const music = document.getElementById("bgMusic");
-  music.play().catch(() => {});
-}, { once: true });
+  music.play().then(() => {
+    music.pause(); // cuma unlock, bukan langsung play
+    music.currentTime = 0;
+  }).catch(() => {});
+  
+  document.removeEventListener("click", unlockAudio);
+});
   
 function goBack(){ bukaFolder(currentPage); }
 function goNext(){ bukaIsi("cinta"); }
