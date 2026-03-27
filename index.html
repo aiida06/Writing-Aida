@@ -212,7 +212,7 @@ setTimeout(()=>{
 if(nama==="cinta"){
 
 music.volume = 0;
-music.play().catch(()=>{});
+music.play();
 
 // fade in
 let v=0;
@@ -247,6 +247,11 @@ content.classList.add("show");
 },200);
 }
 
+  document.addEventListener("click", () => {
+  const music = document.getElementById("bgMusic");
+  music.play().catch(() => {});
+}, { once: true });
+  
 function goBack(){ bukaFolder(currentPage); }
 function goNext(){ bukaIsi("cinta"); }
 </script>
