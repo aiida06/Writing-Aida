@@ -9,6 +9,19 @@
 
 <style>
 body {
+  <script>
+var disqus_config = function () {
+this.page.url = window.location.href;
+this.page.identifier = window.location.pathname;
+};
+
+(function() {
+var d = document, s = d.createElement('script');
+s.src = 'https://writing-aida.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.body).appendChild(s);
+})();
+</script>
   background-color: #1F2A44;
   color: #F5F1ED;
   font-family: 'Georgia', serif;
@@ -41,6 +54,8 @@ h2 {
   margin-bottom: 22px;
 }
 
+  <div id="disqus_thread"></div>
+  
 /* ANIMASI */
 .fade-in {
   opacity: 0;
@@ -194,6 +209,15 @@ content.innerHTML=`
 <h2>~Coming Soon~</h2>
 <div class="sub-folder">📄</div>
 `;
+  if (window.DISQUS) {
+  DISQUS.reset({
+    reload: true,
+    config: function () {
+      this.page.identifier = nama;
+      this.page.url = window.location.href;
+    }
+  });
+}
 }
 
 content.classList.add("show");
