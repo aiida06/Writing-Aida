@@ -1,93 +1,180 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Drafts I Never Sent — Aida</title>
-    <style>
-        /* --- SEMUA WARNA BIRU GELAP ASLI KAMU --- */
-        body {
-            background-color: #1F2A44; /* Warna Biru Gelap CodePen */
-            color: #F5F1ED;
-            font-family: 'Georgia', serif;
-            padding: 40px;
-            text-align: center;
-            margin: 0;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Drafts I Never Sent —Aida</title>
+<style>
+  body {
+    background-color: #1F2A44;
+    color: #F5F1ED;
+    font-family: 'Georgia', serif;
+    padding: 40px;
+    text-align: center;
+  }
 
-        h1 { color: #C75C5C; margin-top: 20px; }
-        
-        .subtitle { margin-bottom: 40px; font-style: italic; opacity: 0.8; }
+  h1 {
+    color: #C75C5C;
+  }
 
-        .folders {
-            display: flex; justify-content: center; gap: 20px;
-            margin-bottom: 40px; flex-wrap: wrap;
-        }
+  .subtitle {
+    margin-bottom: 40px;
+    font-style: italic;
+    opacity: 0.8;
+  }
 
-        .folder {
-            background-color: #2E3A59;
-            color: #F5F1ED;
-            padding: 15px 25px;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: 0.3s;
-            font-weight: bold;
-            border: none;
-            /* Shadow tegas sesuai gaya kamu */
-            box-shadow: 6px 6px 0px rgba(0,0,0,0.2);
-        }
+  /* ✨ ANIMASI MASUK */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeIn 1s ease forwards;
+  }
 
-        .folder:hover {
-            background-color: #C75C5C;
-            transform: scale(1.05);
-        }
+  .fade-in:nth-child(1) { animation-delay: 0.2s; }
+  .fade-in:nth-child(2) { animation-delay: 0.4s; }
+  .fade-in:nth-child(3) { animation-delay: 0.6s; }
 
-        .content {
-            max-width: 700px; margin: auto;
-            background-color: #2E3A59;
-            padding: 30px; border-radius: 12px;
-            text-align: left; line-height: 1.8;
-            display: none; /* Sembunyi dulu */
-            border: 1px solid rgba(255,255,255,0.1);
-        }
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 
-        .show { display: block; animation: fadeIn 0.5s ease; }
+  .folders {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 40px;
+  }
 
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  .folder {
+    background-color: #2E3A59;
+    padding: 15px 25px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3); /* shadow default */
+  }
 
-        #disqus_thread { margin-top: 30px; }
-    </style>
+  .folder:hover {
+    background-color: #C75C5C;
+    transform: scale(1.05);
+    box-shadow: 0 8px 15px rgba(199,92,92,0.6); /* glow saat hover */
+  }
+
+  .sub-folder {
+    background-color: #3B4A76;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 5px rgba(0,0,0,0.25);
+  }
+
+  .sub-folder:hover {
+    background-color: #C75C5C;
+    transform: scale(1.02);
+    box-shadow: 0 6px 12px rgba(199,92,92,0.5);
+  }
+
+  .content {
+    max-width: 700px;
+    margin: auto;
+    background-color: #2E3A59;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: left;
+    line-height: 1.8;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 0.5s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+  }
+
+  .content.show {
+    opacity: 1;
+    transform: translateY(0);
+    box-shadow: 0 10px 25px rgba(199,92,92,0.6); /* glow saat muncul */
+  }
+
+  #disqus_thread {
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+</style>
 </head>
 <body>
 
-    <h1>Drafts I Never Sent — Aida:3</h1>
-    <p class="subtitle">"Selamat datang di pikiranku^∆^.. agak berantakan, tapi mungkin kamu akan suka."</p>
+<h1 class="fade-in">Drafts I Never Sent —Aida:3</h1>
 
-    <div class="folders">
-        <div class="folder" onclick="buka('cerita')">📁 Cerita Pendek</div>
-        <div class="folder" onclick="buka('random')">📁 Random</div>
-    </div>
+<p class="subtitle fade-in">
+  Selamat datang di pikiranku^∆^.. agak berantakan, tapi mungkin kamu akan suka.
+</p>
 
-    <div id="boxKonten" class="content">
-        <div id="isiTeks"></div>
-        <div id="disqus_thread"></div>
-    </div>
+<div class="folders fade-in">
+  <div class="folder" onclick="bukaFolder('cerpen')">📁 Cerita Pendek</div>
+  <div class="folder" onclick="bukaFolder('random')">📁 Random</div>
+</div>
 
-    <script>
-        /* --- JAVASCRIPT BIAR TOMBOL BISA DIKLIK --- */
-        function buka(tipe) {
-            var box = document.getElementById('boxKonten');
-            var teks = document.getElementById('isiTeks');
-            
-            if (tipe === 'cerita') {
-                teks.innerHTML = "<h3>Judul Cerita Kamu</h3><p>Tulis draf cerita kamu di sini ya...</p>";
-            } else {
-                teks.innerHTML = "<h3>Random Thoughts</h3><p>Tulis pikiran random kamu di sini...</p>";
-            }
-            
-            box.classList.add('show');
-        }
-    </script>
+<div id="content" class="content"></div>
+
+<div id="disqus_thread"></div>
+
+<script>
+function bukaFolder(nama) {
+  const content = document.getElementById("content");
+  content.classList.remove("show");
+
+  setTimeout(() => {
+    if (nama === "random") {
+      content.innerHTML = `
+        <div class="sub-folder" onclick="bukaIsi('cinta')">
+          📄 Tentang Rasa yang Tak Pernah Sederhana
+        </div>
+      `;
+    } else if (nama === "cerpen") {
+      content.innerHTML = `
+        <h2>~Coming Soon~</h2>
+        <div class="sub-folder">
+          📄 
+        </div>
+      `;
+    }
+    content.classList.add("show");
+  }, 200);
+}
+
+function bukaIsi(nama) {
+  const content = document.getElementById("content");
+  content.classList.remove("show");
+
+  setTimeout(() => {
+    if (nama === "cinta") {
+      content.innerHTML = `
+        <h2>Tentang Rasa yang Tak Pernah Sederhana</h2>
+        <p>Kenapa cinta bisa menjadi sebuah perasaan yang punya kekuatan begitu besar?</p>
+        <p>Bahkan tulisan ini dimulai dari rasa tersebut. Tulisan yang entah akan jadi apa, entah akan seberapa panjang. Tulisan ini hanya tau kalau ia dimulai dari cinta.</p>
+        <p>Sering kali manusia menginginkan cinta, saat sedang sedih, saat sedang bahagia, di kondisi-kondisi yang cenderung besar bagi seseorang, mereka akan mendambakan adanya cinta di antara hal-hal lainnya. Dari sekian banyak hal yang bisa diminta, manusia akan meminta cinta. Setidaknya bagi mereka yang sudah pernah mengenalnya.</p>
+        <p>Namun, bukankah dunia memang dipenuhi dengan cinta? Tuhan memberikan cinta-Nya kepada manusia dalam segala rupa, di segala waktu. Cahaya matahari pagi, hujan di sore hari, desir ombak, angin lembut di malam hari, seandainya bersikeras untuk lebih merasakan hal-hal di sekitar, manusia akan menemukan cinta dalam segalanya.</p>
+        <p>Cinta dari manusia lain lah yang sering diidamkan. Seseorang untuk berbagi perasaan. Ketika sebuah mulut berbicara kemudian kata-kata yang keluar dapat tersampaikan ke hati yang lain. Berbicara sembari dimengerti jiwanya, bercerita seolah mereka sejiwa. Ketika keberadaan satu sama lain bukan lagi sesuatu yang perlu diminta, seolah terhubung, seolah menjadi satu.</p>
+        <p>Waktu akan berlalu, tapi cinta akan terus tertinggal. Sekecil apa pun itu, dalam berbagai rupa, di berbagai tempat, dan di segala waktu. Saat cinta yang ditemui adalah cinta yang sesungguhnya. Cinta yang bisa memberikan rasa aman, rasa nyaman, bahkan humor di tengah lara. Tak banyak cinta seperti itu. Sungguh.</p>
+      `;
+    }
+    content.classList.add("show");
+  }, 200);
+}
+
+// Disqus
+(function() {
+  var d = document, s = d.createElement('script');
+  s.src = 'https://writing-aida.disqus.com/embed.js';
+  s.setAttribute('data-timestamp', +new Date());
+  (d.head || d.body).appendChild(s);
+})();
+</script>
 
 </body>
 </html>
