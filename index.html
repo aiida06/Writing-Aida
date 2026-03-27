@@ -8,6 +8,19 @@
 <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
+  <script>
+var disqus_config = function () {
+this.page.url = window.location.href;
+this.page.identifier = "home";
+};
+
+(function() {
+var d = document, s = d.createElement('script');
+s.src = 'https://writing-aida.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.body).appendChild(s);
+})();
+</script>
 body {
   background-color: #1F2A44;
   color: #F5F1ED;
@@ -54,8 +67,6 @@ h2 {
   letter-spacing: 2px;
   margin-bottom: 22px;
 }
-
-  <div id="disqus_thread"></div>
   
 /* ANIMASI */
 .fade-in {
@@ -281,6 +292,8 @@ content.classList.add("show");
   
   document.removeEventListener("click", unlockAudio);
 });
+
+  <div id="disqus_thread"></div>
   
 function goBack(){ bukaFolder(currentPage); }
 function goNext(){ bukaIsi("cinta"); }
