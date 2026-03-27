@@ -53,14 +53,12 @@
     padding: 15px 25px;
     border-radius: 10px;
     cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.3); /* shadow default */
+    transition: transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3); /* shadow elegan */
   }
 
   .folder:hover {
-    background-color: #C75C5C;
-    transform: scale(1.05);
-    box-shadow: 0 8px 15px rgba(199,92,92,0.6); /* glow saat hover */
+    transform: scale(1.03); /* cuma scale, warna tetep */
   }
 
   .sub-folder {
@@ -69,14 +67,12 @@
     margin-bottom: 10px;
     border-radius: 8px;
     cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 3px 5px rgba(0,0,0,0.25);
+    transition: transform 0.2s ease;
+    box-shadow: 0 3px 5px rgba(0,0,0,0.25); /* shadow bawah biasa */
   }
 
   .sub-folder:hover {
-    background-color: #C75C5C;
-    transform: scale(1.02);
-    box-shadow: 0 6px 12px rgba(199,92,92,0.5);
+    transform: scale(1.02); /* cuma scale */
   }
 
   .content {
@@ -90,13 +86,12 @@
     opacity: 0;
     transform: translateY(20px);
     transition: 0.5s ease, box-shadow 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.25); /* shadow bawah biasa */
   }
 
   .content.show {
     opacity: 1;
     transform: translateY(0);
-    box-shadow: 0 10px 25px rgba(199,92,92,0.6); /* glow saat muncul */
   }
 
   #disqus_thread {
@@ -136,12 +131,7 @@ function bukaFolder(nama) {
         </div>
       `;
     } else if (nama === "cerpen") {
-      content.innerHTML = `
-        <h2>~Coming Soon~</h2>
-        <div class="sub-folder">
-          📄 
-        </div>
-      `;
+      content.innerHTML = `<h2>~Coming Soon~</h2>`;
     }
     content.classList.add("show");
   }, 200);
